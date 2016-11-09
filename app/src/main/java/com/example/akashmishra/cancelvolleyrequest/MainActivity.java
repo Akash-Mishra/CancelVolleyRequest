@@ -41,6 +41,18 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         );
-        
+        stringRequest.setTag(this);
+        mRequestQueue.add(stringRequest);
+        finish();
+    }
+
+    public void close(View view){
+        finish();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mRequestQueue.cancelAll(this);
     }
 }
